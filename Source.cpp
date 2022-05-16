@@ -56,6 +56,7 @@ int main() {
         cout << parts[i] << endl;
     }
 
+
     //FORMING THE PUN. CALLING THE AND FUNCTION
 
     AND(parts);
@@ -67,6 +68,11 @@ int main() {
 void AND(vector <string>& parts) {
 
     int MOSCOUNT = 0;
+
+    if (parts.size() == 1 && parts[0].size()==1)
+    {
+        cout << "No spice netlists, output equals the input" << endl; return;
+    }
 
     for (int i = 0; i < parts.size(); i++) {
 
@@ -111,6 +117,11 @@ void AND(vector <string>& parts) {
             //complement all subs. Each sub is either a letter or a complement of a letter. If there is only a letter, add a complement. If there is a complement, then remove it.
             for (int b = 0; b < subs.size(); b++) {
                 if (subs.at(b).length() == 1) {
+                    cout << "m" << MOSCOUNT << " " << subs.at(b) + "'" << " " << subs.at(b) << " " << "VDD" << " " << "VDD" << " " << "PMOS" <<"\t\t not gate" << endl;
+                    MOSCOUNT++;
+                    cout << "m" << MOSCOUNT << " " << subs.at(b) + "'" << " " << subs.at(b) << " " << "0" << " " << "0" << " " << "NMOS" <<"\t\t not gate" << endl;
+                    MOSCOUNT++;
+
                     subs.at(b) = subs.at(b)+"'";
                 }
                 else if (subs.at(b).length() == 2) {
@@ -137,6 +148,10 @@ void AND(vector <string>& parts) {
         else {
             //only have 1 mosfet. Before printing, complement the input.
             if (temp.length() == 1) {
+                cout << "m" << MOSCOUNT << " " << temp + "'" << " " << temp << " " << "VDD" << " " << "VDD" << " " << "PMOS" << "\t\t not gate" << endl;
+                MOSCOUNT++;
+                cout << "m" << MOSCOUNT << " " << temp + "'" << " " << temp << " " << "0" << " " << "0" << " " << "NMOS" << "\t\t not gate" << endl;
+                MOSCOUNT++;
                 temp = temp + "'";
             }
             else if (temp.length() == 2) {
