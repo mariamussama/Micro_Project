@@ -7,7 +7,7 @@ using namespace std;
 void AND(vector <string>& parts);
 void NMOS(vector <string>& parts, int MOSCOUNT);
 
-int main() {
+int main() {     // A little note: in Minute 1:35 if the Mosfets are connected in series, then they can not have the same source and drain voltages.
 
     //inputting the equation.
     cout << "Enter boolean function (DO NOT INCLUDE SPACES):  y = ";
